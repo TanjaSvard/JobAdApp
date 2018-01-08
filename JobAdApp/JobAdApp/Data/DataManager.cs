@@ -35,12 +35,6 @@ namespace JobAdApp.Data
             RootObject r = JsonConvert.DeserializeObject<RootObject>(searchResult);
             return r;
         }
-
-        public async Task<RootObject> TestMethod(string keyWord)
-        {
-            string searchResult = await client.GetStringAsync(Url + "?lanid=1&antalrader=100&nyckelord=" + keyWord);
-            RootObject r = JsonConvert.DeserializeObject<RootObject>(searchResult);
-            return r;
-        }
+  
     }
 }
