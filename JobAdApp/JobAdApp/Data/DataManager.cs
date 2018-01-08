@@ -15,8 +15,8 @@ namespace JobAdApp.Data
         public DataManager()
         {
             client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.DefaultRequestHeaders.Add("Accept-Language", "sv");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Accept-Language", "sv");
         }
 
 
@@ -30,11 +30,15 @@ namespace JobAdApp.Data
 
 
         public async Task<RootObject> Search(string keyWord)
-        {         
-            string searchResult = await client.GetStringAsync(Url + "?lanid=1&antalrader=100&nyckelord=" +keyWord);
+        {
+            string searchResult = await client.GetStringAsync(Url + "?lanid=1&antalrader=100&nyckelord=" + keyWord);
             RootObject r = JsonConvert.DeserializeObject<RootObject>(searchResult);
+            if (r.ResultFromApi.JobAds ==null)
+            {
+                r.ResultFromApi.JobAds = new List<JobAd>();
+            }
             return r;
         }
-  
+
     }
 }

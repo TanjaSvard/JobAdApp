@@ -70,13 +70,18 @@ namespace JobAdApp
 
             adCollection.Clear();
 
-            foreach (JobAd ad in root.ResultFromApi.JobAds)
+            if (root.ResultFromApi.JobAds.Count() == 0)
             {
-
-                    adCollection.Add(ad);
-
+                DisplayAlert("Inga träffar", "", "OK");
             }
 
+            
+
+            foreach (JobAd ad in root.ResultFromApi.JobAds)
+            {             
+                    adCollection.Add(ad);
+              
+            }
         }
 
         private void ToolbarItem_Activated(object sender, EventArgs e)
