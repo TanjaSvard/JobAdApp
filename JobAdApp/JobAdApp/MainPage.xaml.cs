@@ -38,9 +38,7 @@ namespace JobAdApp
             {
                 this.IsBusy = false;
             }
-
-            //summary = await manager.GetSummary();
-            //var jobAdCollection = await manager.GetSummary();
+          
 
             adCollection.Clear();
 
@@ -64,15 +62,12 @@ namespace JobAdApp
             {
                 this.IsBusy = false;
             }
-
-            //summary = await manager.GetSummary();
-            //var jobAdCollection = await manager.GetSummary();
-
+      
             adCollection.Clear();
 
             if (root.ResultFromApi.JobAds.Count() == 0)
             {
-                DisplayAlert("Inga träffar", "", "OK");
+               await DisplayAlert("Inga träffar", "", "OK");
             }
 
             
